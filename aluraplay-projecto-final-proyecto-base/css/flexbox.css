@@ -1,0 +1,180 @@
+/*Header principal*/
+.cabecera__container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /*Para fijarlo*/
+    top: 0%;
+}
+
+.cabecera__buscar__item{
+display: none;   /*Elimina el buscador en versión Móvil*/
+}
+
+/*-----VIDEOS----------*/
+
+.videos__item{
+    width: 280px;
+    height: 303px;
+    flex-grow:1 ;/*Para distribuir los elementos con todo el espacio disponible que tienen, 1 para que el espacio sea proporcional*/ 
+
+}
+
+.videos__container{
+    display: flex;
+    flex-wrap: wrap; /*Para que se distribuyan todo los videos */
+    gap: 10px;
+}
+
+.descripcion-video{
+    margin-top: 1rem;
+    display: flex;
+    align-items: start;
+}
+
+.descripcion-video img{
+    margin-right: 1rem;
+    flex-shrink: 0; /*  Evita que la imagen se reduzca - reducir el tamaño de los elementos a medida que su contenedor disminuye en anchura*/
+
+}
+
+.detalles__video{
+    flex-direction: column;
+    text-align: left ;
+
+}
+
+.detalles__video h3{
+    margin-bottom: 9px;
+}
+
+/*Radiapie*/
+
+.rodapie__container{
+    display: flex;
+    /*flex-direction: column;
+    flex-wrap: wrap; -----------------*/ /*elementos hijos que se moverán a la siguiente línea cuando ya no hay suficiente espacio en la línea actual*/
+    flex-flow: column wrap;
+}
+
+/*Menú superior*/
+.superior__seccion__container{
+    display:flex; /*alinearlo*/
+    align-items: center; /*Centrar el items*/
+    white-space: nowrap; /*Para no se divida el texto de los elemento*/
+    overflow: scroll; /*Creamos una barra de desplazamiento */
+    gap: 15px; /*Agregamos espacio entre ellos (botones)*/
+}
+
+/*Menu lateral Version movil*/
+.menu__container{
+    position: fixed; /*Posicionarlo fijo*/
+    bottom:0% ; /*Darle pocisionamiento, ubicandose en la parte inferior*/
+    height: 75px;/*Disminuimos la altura del contenedor*/
+    width: 100%;/*Abarcar el ancho de la pagina*/
+    
+}
+
+/*Menu lateral Version movil- /*Organizar el menu*/
+.menu__lista{
+    display: flex;
+    justify-content:space-around ; /*Se distribuyen entre ellos*/
+    height: 100%;
+}
+
+/*Elementos hijos Para trabajar en elementos hijo */
+.menu__lista li{ 
+    align-self: center; /*Centramos*/
+}
+
+/*Alineacion*/
+.menu__itens{ 
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/*pseudo-clase*/
+/*Menu lateral Version movil- /*Organizar el menu*/
+
+.menu__lista:nth-child(2), /*Listas que queremos ocultar*/
+.menu__lista:nth-child(3),
+.menu__lista:nth-child(4){
+    display: none; /*Se ocultan las demas listas*/
+}
+
+
+/*RESPONSIVE*/
+
+@media (min-width:834px){
+    /*Header- Para el buscador*/
+    .cabecera__buscar__item{
+        display: block;   
+    }
+
+    .rodapie__container{
+        justify-content: space-between; /*Mismo Espacio entre columna*/
+    }
+
+    /*Menu lateral para tablet*/
+    .menu__container{
+        left: 0; /*se alinea exactamente con el borde izquierdo de su contenedor padre*/
+        width: 74px;
+        height: auto;
+        top: 80px
+    }
+
+    .menu__lista{
+        flex-direction: column;
+        padding-top: 15px;   
+        gap: 33px;
+    }
+
+
+}
+
+/*VERSIÓN- Menú Escritorio*/
+
+@media (min-width: 1440px){
+
+    .menu__container{
+        width: 239px;
+        overflow: scroll;
+    }
+
+    .menu__lista:nth-child(2), 
+    .menu__lista:nth-child(3),
+    .menu__lista:nth-child(4){
+        display: flex; /*Para mostralo en version Desktop*/
+    }
+
+    .menu__lista{
+        height: auto;
+        padding: 20px 17px 20px 15px; /*Para delimitar los contenedores, cada ancho del elemento*/
+        gap: 15px;
+    }
+
+    .menu__lista:nth-child(3){
+        flex-direction: column-reverse; /*Revertimos los elementos*/
+    }
+
+    .menu__itens{
+        flex-direction: row;
+        gap: 15px;
+        align-items: center; /*Centrar el icono con el texto*/
+    }
+
+    /*Elementos hijos- Posicionamiento de cada uno de ellos*/
+    .videojuegos{
+        order: 3;
+    }
+    .peliculas{
+        order: 2;
+    }
+
+    .premium{
+        order: 1;
+    }
+
+
+}
